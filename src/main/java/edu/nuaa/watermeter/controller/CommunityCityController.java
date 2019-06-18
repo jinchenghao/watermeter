@@ -41,7 +41,7 @@ public class CommunityCityController {
 		JSONArray result = new JSONArray();	
 		if(list.size()==0){
 			JSONObject item = new JSONObject();
-			item.put("message", "无地区信息");
+			item.put("message", "无地区信息!");
 			result.add(item);
 		}else{
 			for (CommunityCity communityCity : list) {
