@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="edu.nuaa.watermeter.dao.AdminDao" >
+	<resultMap id="adminResultMap" type="admin">
+		<id property="id" column="admin_id" />
+		<result property="name" column="admin_name" />
+		<result property="password" column="admin_pwd" />
+	</resultMap>
+	<insert id="insertAdmin" parameterType="admin" useGeneratedKeys="true" keyProperty="id">
+		insert into wm_admin(admin_name,admin_pwd,admin_email,admin_phone) values(#{name},#{password},#{email},#{phone})
+	</insert>
+	
+	<delete id="deleteAdmin" parameterType="long">
+		delete from wm_admin where id=#{id}
+	</delete>
+	
+	<update id="updateAdmin" parameterType="admin">
+		update wm_admin set admin_name=#{name}, admin_pwd=#{password}. admin_email=#{email}, admin_phone=#{phone} where id=#{id}
+	</update>
+	
+	<select id="getAdmin" parameterType="string" resultMap="adminResultMap">
+		select admin_id,admin_name,admin_pwd from wm_admin where admin_name = #{name}
+	</select>
+</mapper>

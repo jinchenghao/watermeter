@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<!-- <setting name="useGenerateKeys" value="true" /> -->
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="defaultStatementTimeout" value="25000" />
+	</settings>
+	<typeAliases><!-- 别名 -->
+		<typeAlias alias="admin" type="edu.nuaa.watermeter.pojo.Admin"/>
+		<typeAlias alias="communityCity" type="edu.nuaa.watermeter.pojo.CommunityCity"/>
+	</typeAliases>
+	<!-- 映射文件 -->
+	<mappers>
+		<mapper resource="edu/nuaa/watermeter/dao/AdminMapper.xml"/>
+		<mapper resource="edu/nuaa/watermeter/dao/CommunityCityMapper.xml"/>
+	</mappers>
+</configuration>

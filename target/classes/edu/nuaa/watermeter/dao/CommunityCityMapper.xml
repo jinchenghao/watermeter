@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="edu.nuaa.watermeter.dao.CommunityCityDao" >
+	<resultMap id="communityCityResultMap" type="communityCity">
+		<id property="cityCode" column="city_code" />
+		<id property="unitCode" column="unit_code" />
+		<id property="comunityCode" column="comunity_code" />
+		<result property="communityName" column="community_name" />
+		<result property="cityName" column="city_name" />
+		<result property="unitName" column="unit_name" />
+	</resultMap>
+	<insert id="insertCommunityCity" parameterType="communityCity">
+		insert into meter_community_city(city_code,unit_code,comunity_code,community_name,city_name,unit_name) values(#{cityCode},#{unitCode},#{comunityCode},#{comunityName},
+		#{cityName},#{unitName})
+	</insert>
+	
+	<delete id="deleteCommunityCity" parameterType="communityCity">
+		delete from meter_community_city where city_code=#{cityCode} AND unit_code=#{unitCode} AND comunity_code=#{comunityCode}
+	</delete>
+	
+	<update id="updateCommunityCity" parameterType="communityCity">
+		update meter_community_city set city_code=#{cityCode}, unit_code=#{unitCode}, comunity_code=#{comunityCode}, community_name=#{comunityName},
+		city_name=#{cityName}, unit_name=#{unitName} where city_code=#{cityCode} AND unit_code=#{unitCode} AND comunity_code=#{comunityCode}
+	</update>
+	
+	<select id="getCommunityCity" parameterType="map" resultMap="communityCityResultMap">
+		select * from meter_community_city
+		<where>
+			<if test="cityName != null and cityName != ''">
+				and city_name = #{cityName}
+			</if>
+			<if test="communityName != null and communityName != ''">
+				and community_name = #{communityName}
+			</if>
+			<if test="unitName != null and unitName != ''">
+				and unit_name = #{unitName}
+			</if>
+		</where>
+	</select>
+	<select id="getCommunityCityByCity" parameterType="string" resultMap="communityCityResultMap">
+		select * from meter_community_city where city_name = #{cityName}
+	</select>
+	<select id="getCommunityCityByCommunity" parameterType="string" resultMap="communityCityResultMap">
+		select * from meter_community_city where community_name = #{communityName}
+	</select>
+	<select id="getCommunityCityByUnit" parameterType="string" resultMap="communityCityResultMap">
+		select * from meter_community_city where unit_name = #{unitName}
+	</select>
+</mapper>

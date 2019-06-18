@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    	xmlns:aop="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:cache="http://www.springframework.org/schema/cache"
+    	xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/cache
+    http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <!-- 启用扫描机制，并制定扫描对应的包 -->
+    <context:component-scan base-package="edu.nuaa.watermeter.*">
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	<!-- 数据库连接池 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+    	<property name="url" value="jdbc:mysql://localhost:3306/watermeter" />
+    	<property name="driverClass" value="com.mysql.jdbc.Driver" />
+    	<property name="username" value="root" />
+    	<property name="password" value="1234" />
+	</bean>
+	<!-- 集成MyBatis -->
+	<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 指定MyBatis的配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	<!-- 事务管理器配置数据源事务 -->
+	<bean id="transactionManager"
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 使用注解定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 自动扫描方式创建mapper bean -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="edu.nuaa.watermeter.*" />
+		<property name="SqlSessionFactoryBeanName" value="SqlSessionFactory" />
+		<property name="annotationClass" value="org.springframework.stereotype.Repository"></property> 
+	</bean>
+</beans>
