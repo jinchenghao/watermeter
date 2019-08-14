@@ -1,6 +1,5 @@
 package edu.nuaa.watermeter.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +35,9 @@ public class CommunityCityController {
 		String resultStr = result.toJSONString();
 	    ResponseUtils.send(response, resultStr);
 	}
+	
+	@RequestMapping("/citycode")
+	//public void getCity()
 	
 	private JSONArray list2JsonArray(List<CommunityCity> list){
 		JSONArray result = new JSONArray();	

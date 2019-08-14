@@ -1,5 +1,7 @@
 package edu.nuaa.watermeter.pojo;
 
+import java.sql.Blob;
+
 public class WmStatus {
 	private String readId;
 	private String meterAddress;
@@ -9,9 +11,9 @@ public class WmStatus {
 	private String signalIndicator;
 	private String meterImageWidth;
 	private String meterImageHeight;
-	private String meterImage;
+	private byte[] meterImage;
 	private String cityCode;
-	private String grayImage;
+	private byte[] grayImage;
 	public String getReadId() {
 		return readId;
 	}
@@ -60,10 +62,10 @@ public class WmStatus {
 	public void setMeterImageHeight(String meterImageHeight) {
 		this.meterImageHeight = meterImageHeight;
 	}
-	public String getMeterImage() {
+	public byte[] getMeterImage() {
 		return meterImage;
 	}
-	public void setMeterImage(String meterImage) {
+	public void setMeterImage(byte[] meterImage) {
 		this.meterImage = meterImage;
 	}
 	public String getCityCode() {
@@ -72,10 +74,10 @@ public class WmStatus {
 	public void setCityCode(String cityCode) {
 		this.cityCode = cityCode;
 	}
-	public String getGrayImage() {
+	public byte[] getGrayImage() {
 		return grayImage;
 	}
-	public void setGrayImage(String grayImage) {
+	public void setGrayImage(byte[] grayImage) {
 		this.grayImage = grayImage;
 	}
 	

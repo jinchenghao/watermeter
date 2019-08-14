@@ -10,7 +10,8 @@
 <meta charset="utf-8">
  
 <title>某管理系统</title>
-<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<%=basePath %>resources/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath %>resources/css/myCss/login.css">
  
 <style>
 	body{
@@ -98,7 +99,8 @@
 					<a href="#" class="list-group-item active">首页</a>
 				</div>
 				<div class="list-group">
-					<a href="#" class="list-group-item">信息查询</a>
+					<a href="registerUser.do" class="list-group-item">添加管理员</a>
+					<a href="manageCommunity.do" class="list-group-item">负责社区</a>
 					<a href="#" class="list-group-item">信息管理</a>
 					<a href="#" class="list-group-item">信息建立</a>
 				</div>
@@ -233,7 +235,8 @@
  
  
  
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="<%=basePath %>resources/js/bootstrap/jquery-1.11.3.min.js"></script>
+<script src="<%=basePath %>resources/js/bootstrap/bootstrap.js"></script>
+<script src="<%=basePath %>resources/js/myJs/login.js"></script>
 </body>
 </html></span>

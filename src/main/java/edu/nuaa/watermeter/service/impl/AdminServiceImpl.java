@@ -16,5 +16,10 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		return adminDao.getAdmin(name);
 	}
+	@Override
+	public int insertAdmin(Admin admin) {
+		// TODO Auto-generated method stub
+		return adminDao.insertAdmin(admin);
+	}
 	
 }

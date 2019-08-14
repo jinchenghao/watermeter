@@ -5,9 +5,12 @@
 		<id property="id" column="admin_id" />
 		<result property="name" column="admin_name" />
 		<result property="password" column="admin_pwd" />
+		<result property="email" column="admin_email" />
+		<result property="phone" column="admin_phone" />
+		<result property="manageCity" column="manage_city" />
 	</resultMap>
 	<insert id="insertAdmin" parameterType="admin" useGeneratedKeys="true" keyProperty="id">
-		insert into wm_admin(admin_name,admin_pwd,admin_email,admin_phone) values(#{name},#{password},#{email},#{phone})
+		insert into wm_admin(admin_name,admin_pwd,admin_email,admin_phone,manage_city) values(#{name},#{password},#{email},#{phone},#{manageCity})
 	</insert>
 	
 	<delete id="deleteAdmin" parameterType="long">
@@ -15,10 +18,11 @@
 	</delete>
 	
 	<update id="updateAdmin" parameterType="admin">
-		update wm_admin set admin_name=#{name}, admin_pwd=#{password}. admin_email=#{email}, admin_phone=#{phone} where id=#{id}
+		update wm_admin set admin_name=#{name}, admin_pwd=#{password} admin_email=#{email}, admin_phone=#{phone},
+		manage_city=#{manageCity} where id=#{id}
 	</update>
 	
 	<select id="getAdmin" parameterType="string" resultMap="adminResultMap">
-		select admin_id,admin_name,admin_pwd from wm_admin where admin_name = #{name}
+		select admin_id,admin_name,admin_pwd,admin_email,admin_phone,manage_city from wm_admin where admin_name = #{name}
 	</select>
 </mapper>

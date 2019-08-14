@@ -1,5 +1,7 @@
 package edu.nuaa.watermeter.pojo;
 
+import java.util.List;
+
 public class User {
 	private String comunityCode;
 	private String unitCode;
@@ -9,7 +11,7 @@ public class User {
 	private String userPhone;
 	private String simccid;
 	private String cityCode;
-	private String meterAddress;
+	private List<WmStatus> wmStatus;
 	public String getComunityCode() {
 		return comunityCode;
 	}
@@ -58,11 +60,11 @@ public class User {
 	public void setCityCode(String cityCode) {
 		this.cityCode = cityCode;
 	}
-	public String getMeterAddress() {
-		return meterAddress;
+	public List<WmStatus> getWmStatus() {
+		return wmStatus;
 	}
-	public void setMeterAddress(String meterAddress) {
-		this.meterAddress = meterAddress;
+	public void setWmStatus(List<WmStatus> wmStatus) {
+		this.wmStatus = wmStatus;
 	}
 	
 	

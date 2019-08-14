@@ -43,9 +43,9 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	}
 	
 	@Override
-	public List<CommunityCity> getCommunityCityByCity(String Cityname) {
+	public List<CommunityCity> getCommunityCityByCity(String cityCode) {
 		// TODO Auto-generated method stub
-		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByCity(Cityname);
+		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByCity(cityCode);
 		for (CommunityCity communityCity : communityCityList) {
 			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
 		}
@@ -53,9 +53,9 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	}
 
 	@Override
-	public List<CommunityCity> getCommunityCityByCommunity(String Communityname) {
+	public List<CommunityCity> getCommunityCityByCommunity(String communityCode) {
 		// TODO Auto-generated method stub
-		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByCommunity(Communityname);
+		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByCommunity(communityCode);
 		for (CommunityCity communityCity : communityCityList) {
 			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
 		}
@@ -63,9 +63,9 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	}
 
 	@Override
-	public List<CommunityCity> getCommunityCityByUnit(String Unitname) {
+	public List<CommunityCity> getCommunityCityByUnit(String unitCode) {
 		// TODO Auto-generated method stub
-		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByUnit(Unitname);
+		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByUnit(unitCode);
 		for (CommunityCity communityCity : communityCityList) {
 			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
 		}

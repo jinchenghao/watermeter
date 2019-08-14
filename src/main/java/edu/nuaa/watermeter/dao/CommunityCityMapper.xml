@@ -38,12 +38,12 @@
 		</where>
 	</select>
 	<select id="getCommunityCityByCity" parameterType="string" resultMap="communityCityResultMap">
-		select * from meter_community_city where city_name = #{cityName}
+		select * from meter_community_city where city_code = #{cityCode}
 	</select>
 	<select id="getCommunityCityByCommunity" parameterType="string" resultMap="communityCityResultMap">
-		select * from meter_community_city where community_name = #{communityName}
+		select * from meter_community_city where comunity_code = #{communityCode}
 	</select>
 	<select id="getCommunityCityByUnit" parameterType="string" resultMap="communityCityResultMap">
-		select * from meter_community_city where unit_name = #{unitName}
+		select * from meter_community_city where unit_code = #{unitCode}
 	</select>
 </mapper>

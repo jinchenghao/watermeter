@@ -10,7 +10,7 @@ public interface CommunityCityService {
 	public int removeCommunityCity(CommunityCity communityCity);
 	public int updateCommunityCity(CommunityCity communityCity);
 	public List<CommunityCity> getCommunityCity(Map<String, String> locationMap);
-	public List<CommunityCity> getCommunityCityByCity(String Cityname);
-	public List<CommunityCity> getCommunityCityByCommunity(String Communityname);
-	public List<CommunityCity> getCommunityCityByUnit(String Unitname);
+	public List<CommunityCity> getCommunityCityByCity(String cityCode);
+	public List<CommunityCity> getCommunityCityByCommunity(String communityCode);
+	public List<CommunityCity> getCommunityCityByUnit(String unitCode);
 }

@@ -6,6 +6,8 @@ public class Admin {
 	private String password;
 	private String email;
 	private String phone;
+	private String manageCity;
+	
 	public int getId() {
 		return id;
 	}
@@ -35,6 +37,12 @@ public class Admin {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getManageCity() {
+		return manageCity;
+	}
+	public void setManageCity(String manageCity) {
+		this.manageCity = manageCity;
 	}
 	
 	

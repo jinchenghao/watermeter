@@ -11,10 +11,14 @@
 	<typeAliases><!-- 别名 -->
 		<typeAlias alias="admin" type="edu.nuaa.watermeter.pojo.Admin"/>
 		<typeAlias alias="communityCity" type="edu.nuaa.watermeter.pojo.CommunityCity"/>
+		<typeAlias alias="user" type="edu.nuaa.watermeter.pojo.User"/>
+		<typeAlias alias="wmStatus" type="edu.nuaa.watermeter.pojo.WmStatus"/>
 	</typeAliases>
 	<!-- 映射文件 -->
 	<mappers>
 		<mapper resource="edu/nuaa/watermeter/dao/AdminMapper.xml"/>
 		<mapper resource="edu/nuaa/watermeter/dao/CommunityCityMapper.xml"/>
+		<mapper resource="edu/nuaa/watermeter/dao/UserMapper.xml"/>
+		<mapper resource="edu/nuaa/watermeter/dao/WmStatusMapper.xml"/>
 	</mappers>
 </configuration>
