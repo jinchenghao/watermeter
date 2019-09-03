@@ -1,8 +1,13 @@
 package edu.nuaa.watermeter.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1145820234580457637L;
 	private String comunityCode;
 	private String unitCode;
 	private String roomCode;
@@ -11,7 +16,7 @@ public class User {
 	private String userPhone;
 	private String simccid;
 	private String cityCode;
-	private List<WmStatus> wmStatus;
+	private List<Record> recordList;
 	public String getComunityCode() {
 		return comunityCode;
 	}
@@ -60,12 +65,13 @@ public class User {
 	public void setCityCode(String cityCode) {
 		this.cityCode = cityCode;
 	}
-	public List<WmStatus> getWmStatus() {
-		return wmStatus;
+	public List<Record> getRecordList() {
+		return recordList;
 	}
-	public void setWmStatus(List<WmStatus> wmStatus) {
-		this.wmStatus = wmStatus;
+	public void setRecordList(List<Record> recordList) {
+		this.recordList = recordList;
 	}
+	
 	
 	
 }

@@ -1,7 +1,8 @@
 package edu.nuaa.watermeter.controller;
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.nuaa.watermeter.pojo.Admin;
 import edu.nuaa.watermeter.pojo.CommunityCity;
+import edu.nuaa.watermeter.pojo.Record;
+import edu.nuaa.watermeter.pojo.User;
 import edu.nuaa.watermeter.service.AdminService;
 import edu.nuaa.watermeter.service.CommunityCityService;
+import edu.nuaa.watermeter.service.UserService;
 import edu.nuaa.watermeter.utils.RequestUtils;
 import edu.nuaa.watermeter.utils.ResponseUtils;
 
@@ -31,15 +35,22 @@ public class LoginController {
 	AdminService adminService = null;
 	@Autowired
 	CommunityCityService communityCityService = null;
+	@Autowired
+	UserService userService = null;
+	@SuppressWarnings("null")
 	@RequestMapping(value="/validateLogin")
 	public void login(HttpServletRequest request, HttpServletResponse response){
 		//获取form表单数据
 	    String loginObj = RequestUtils.getString(request, "loginObj");
-	    String name,pwd;
+	    String name,pwd,time = null;
+	    int pageNum=1,pageSize=20;
 	    boolean flag = false;
 	    if(loginObj==null){
 	    	name = request.getParameter("accountNo");
 	    	pwd = request.getParameter("pwd")==null?"":request.getParameter("pwd");
+	    	time = request.getParameter("date");
+	    	pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	    	pageSize = Integer.parseInt(request.getParameter("pageSize"));
 	    }else{
 	    //JSON字符串序列化成JSON对象
 	    	JSONObject loginJosn = JSONObject.parseObject(loginObj);
@@ -71,9 +82,40 @@ public class LoginController {
 		      if(!cityName.equals("all")){
 		    	  locationMap.put("cityName", cityName);
 		      }
+		      List<Record> resultList = new ArrayList<>();
 			  List<CommunityCity> communityCityList = communityCityService.getCommunityCity(locationMap);
-			  JSONArray resultArray = list2JsonArray(communityCityList);
-			  String resultStr = resultArray.toJSONString();
+			  List<User> users = new ArrayList<>();
+			  List<String> cityCodeList = new ArrayList<>();
+			  for (CommunityCity communityCity : communityCityList) {
+				  if(cityCodeList.contains(communityCity.getCityCode())) continue;
+				  else{
+					  cityCodeList.add(communityCity.getCityCode());
+					  System.out.println(communityCity.getCityName());
+					  //System.out.println(userService.getUserByComunitycode(communityCity.getComunityCode()).size());
+					  users.addAll(userService.getUserByCitycode(communityCity.getCityCode()));
+				  }
+			  }
+			  long time1 = System.currentTimeMillis();
+			  for (User user : users) {
+				  //System.out.println("User:"+user.getComunityCode());
+					List<Record> records = user.getRecordList();
+					//System.out.println(resultList.size());
+					for (Record record : records) {
+						if(time == null) {
+							resultList.addAll(records);
+							break;
+						}
+						if(record.getRecordTime().contains(time)){
+							resultList.add(record);
+						}
+					}
+				}
+			  long time2 = System.currentTimeMillis();
+			  int time3 = (int) ((time2 - time1)/1000);
+		      System.out.println("执行了："+time3+"秒！");
+
+			  JSONArray recordResultArray = Recordlist2JsonArray(resultList);
+			  String resultStr = recordResultArray.toJSONString();
 			  ResponseUtils.send(response, resultStr);
 	    }else{
 	    	String resultStr = result.toJSONString();
@@ -188,5 +230,35 @@ public class LoginController {
 			}
 			return result;
 		}
+	  
+	  private JSONArray Recordlist2JsonArray(List<Record> records){
+			JSONArray result = new JSONArray();	
+			if(records.size()==0){
+				JSONObject item = new JSONObject();
+				item.put("message", "该地区无记录!");
+				result.add(item);
+			}else{
+				for (Record record : records) {
+					JSONObject item = new JSONObject();
+					item.put("meter_address", record.getMeterAddres());
+					item.put("meter_simccid", record.getMeterSimccid());
+					item.put("record_time", record.getRecordTime());
+					item.put("battery_voltage", record.getBatteryVoltage());
+					item.put("signal_indicator", record.getSignalIndicator());
+					item.put("meter_gray_image", record.getMeterGrayImage());
+					item.put("meter_digit_image", record.getMeterDigitImage());
+					item.put("recognize_time", record.getRecognizeTime());
+					item.put("meter_reading", record.getMeterReading());
+					result.add(item);
+				}
+			}
+			return result;
+		}
+	  private List removeDuplicate(List list) {   
+		    HashSet h = new HashSet(list);   
+		    list.clear();   
+		    list.addAll(h);   
+		    return list;   
+		} 
 	
 }

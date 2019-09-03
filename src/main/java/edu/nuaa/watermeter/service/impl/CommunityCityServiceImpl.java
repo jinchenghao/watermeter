@@ -36,9 +36,6 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	public List<CommunityCity> getCommunityCity(Map<String, String> locationMap) {
 		// TODO Auto-generated method stub
 		List<CommunityCity> communityCityList=communityCityDao.getCommunityCity(locationMap);
-		for (CommunityCity communityCity : communityCityList) {
-			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
-		}
 		return communityCityList;
 	}
 	
@@ -46,9 +43,6 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	public List<CommunityCity> getCommunityCityByCity(String cityCode) {
 		// TODO Auto-generated method stub
 		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByCity(cityCode);
-		for (CommunityCity communityCity : communityCityList) {
-			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
-		}
 		return communityCityList;
 	}
 
@@ -56,9 +50,6 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	public List<CommunityCity> getCommunityCityByCommunity(String communityCode) {
 		// TODO Auto-generated method stub
 		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByCommunity(communityCode);
-		for (CommunityCity communityCity : communityCityList) {
-			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
-		}
 		return communityCityList;
 	}
 
@@ -66,9 +57,6 @@ public class CommunityCityServiceImpl implements CommunityCityService{
 	public List<CommunityCity> getCommunityCityByUnit(String unitCode) {
 		// TODO Auto-generated method stub
 		List<CommunityCity> communityCityList=communityCityDao.getCommunityCityByUnit(unitCode);
-		for (CommunityCity communityCity : communityCityList) {
-			System.out.println(communityCity.getCityName()+" "+communityCity.getCommunityName()+" "+communityCity.getUnitName());
-		}
 		return communityCityList;
 	}
 

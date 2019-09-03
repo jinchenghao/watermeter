@@ -7,7 +7,7 @@
 		<id property="comunityCode" column="comunity_code" />
 		<result property="communityName" column="community_name" />
 		<result property="cityName" column="city_name" />
-		<result property="unitName" column="unit_name" />
+		<collection property="userList" column="comunity_code" select="edu.nuaa.watermeter.dao.UserDao.getUserByComunitycode"/>
 	</resultMap>
 	<insert id="insertCommunityCity" parameterType="communityCity">
 		insert into meter_community_city(city_code,unit_code,comunity_code,community_name,city_name,unit_name) values(#{cityCode},#{unitCode},#{comunityCode},#{comunityName},
@@ -46,4 +46,5 @@
 	<select id="getCommunityCityByUnit" parameterType="string" resultMap="communityCityResultMap">
 		select * from meter_community_city where unit_code = #{unitCode}
 	</select>
+	<cache/>
 </mapper>

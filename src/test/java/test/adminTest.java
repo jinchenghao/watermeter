@@ -12,26 +12,27 @@ import edu.nuaa.watermeter.dao.CommunityCityDao;
 import edu.nuaa.watermeter.dao.UserDao;
 import edu.nuaa.watermeter.pojo.Admin;
 import edu.nuaa.watermeter.pojo.CommunityCity;
+import edu.nuaa.watermeter.pojo.Record;
 import edu.nuaa.watermeter.pojo.User;
 import edu.nuaa.watermeter.pojo.WmStatus;
+import edu.nuaa.watermeter.service.UserService;
+import edu.nuaa.watermeter.service.impl.UserServiceImpl;
 
 public class adminTest {
 	public static void main(String[] args){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		UserDao userDao = ctx.getBean(UserDao.class);
-		Map<String, String> map = new HashMap<>();
-		map.put("cityCode", "05151");
-		map.put("communityCode", "00002");
-		map.put("unitCode", "007");
-		List<User> users = userDao.getUserByLocation(map);
+		UserService userService = ctx.getBean(UserServiceImpl.class);
+		List<User> users = userService.getUserByComunitycode("00032");
 		int count=0;
 		for (User user : users) {
 			count++;
-			List<WmStatus> wmStatus = user.getWmStatus();
-			for (WmStatus wmStatus2 : wmStatus) {
-				System.out.print(wmStatus2.getMeterAddress()+" ");
+			System.out.println(user.getUserCode());
+			/*List<Record> wmStatus = user.getRecordList();
+			for (Record wmStatus2 : wmStatus) {
+				System.out.print(wmStatus2.getMeterAddres()+" ");
 			}
-			System.out.println();
+			System.out.println();*/
 		}
 		System.out.println("×ÜÊýÎª£º"+count);
 	}

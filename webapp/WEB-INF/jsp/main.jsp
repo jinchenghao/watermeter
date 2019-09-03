@@ -130,8 +130,8 @@
   						<h3 class="panel-title">最新提醒</h3>
   					</div>
   					<div class="panel-body">
-  						<div class="alert alert-info" role="alert">
-  							<!-- strong用于加粗文字 -->
+  						<!-- <div class="alert alert-info" role="alert">
+  							strong用于加粗文字
   							<strong>提示</strong> 您的订单(20160001)已经审批通过
   						</div>
   						<div class="alert alert-danger" role="alert">
@@ -139,26 +139,26 @@
   						</div>
   						<div class="alert alert-warning" role="alert">
   							<strong>提示</strong> 您的订单(20160003)付款延迟
-  						</div>
+  						</div> -->
   					</div>
   					
   				</div>
  
   				<!-- 2 -->
   				<div class="panel panel-primary">
-  					<div class="panel-heading">
+  					<!-- <div class="panel-heading">
   						<h3 class="panel-title">我的任务</h3>
   					</div>
   					<div class="panel-body" id="btngroup">
   						<div><button class="btn btn-primary" type="button"><span class="pull-left">订单审批</span><span class="badge pull-right">42</span></button></div>
   						<div id="onebtn"><button class="btn btn-primary" type="button"><span class="pull-left">收款确认</span><span class="badge pull-right">20</span></button></div>
   						<div><button class="btn btn-primary" type="button"><span class="pull-left">付款确认</span><span class="badge pull-right">10</span></button></div>
-  					</div>
+  					</div> -->
   				</div>
  
   				<!-- 3 -->
   				<div class="panel panel-primary">
-  					<div class="panel-heading">
+  					<!-- <div class="panel-heading">
   						<h3 class="panel-title">最新订单</h3>	
   					</div>
   					<div class="panel-body">
@@ -196,13 +196,13 @@
   								</tr>
   							</tbody>
   						</table>
-  					</div>
+  					</div> -->
   				</div>
  
  
   				<!-- 4 -->
   				<div class="panel panel-primary">
-  					<div class="panel-heading">
+  					<!-- <div class="panel-heading">
   						<h3 class="panel-title">工程进度</h3>
   					</div>
   					<div class="panel-body">
@@ -218,7 +218,7 @@
   								<span class="sr only">完成20%</span>
   								</div>
   							</div>
-  					</div>
+  					</div> -->
   				</div>
  
   			</div>

@@ -24,10 +24,10 @@
 	<!-- 数据库连接池 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-    	<property name="url" value="jdbc:mysql://localhost:3306/watermeter" />
+    	<property name="url" value="jdbc:mysql://localhost:3309/maintainmeter" />
     	<property name="driverClass" value="com.mysql.jdbc.Driver" />
     	<property name="username" value="root" />
-    	<property name="password" value="1234" />
+    	<property name="password" value="qEhyxk7@zFI!UJB2" />
 	</bean>
 	<!-- 集成MyBatis -->
 	<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

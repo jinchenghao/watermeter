@@ -7,12 +7,14 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 		<setting name="lazyLoadingEnabled" value="true" />
 		<setting name="defaultStatementTimeout" value="25000" />
+		<setting name="localCacheScope" value="SESSION"/>
 	</settings>
 	<typeAliases><!-- 别名 -->
 		<typeAlias alias="admin" type="edu.nuaa.watermeter.pojo.Admin"/>
 		<typeAlias alias="communityCity" type="edu.nuaa.watermeter.pojo.CommunityCity"/>
 		<typeAlias alias="user" type="edu.nuaa.watermeter.pojo.User"/>
 		<typeAlias alias="wmStatus" type="edu.nuaa.watermeter.pojo.WmStatus"/>
+		<typeAlias alias="record" type="edu.nuaa.watermeter.pojo.Record"/>
 	</typeAliases>
 	<!-- 映射文件 -->
 	<mappers>
@@ -20,5 +22,18 @@
 		<mapper resource="edu/nuaa/watermeter/dao/CommunityCityMapper.xml"/>
 		<mapper resource="edu/nuaa/watermeter/dao/UserMapper.xml"/>
 		<mapper resource="edu/nuaa/watermeter/dao/WmStatusMapper.xml"/>
+		<mapper resource="edu/nuaa/watermeter/dao/RecordMapper.xml"/>
 	</mappers>
+	<!-- 插件 -->
+	<plugins>
+    <plugin interceptor="com.github.pagehelper.PageHelper">
+        <property name="dialect" value="mysql"/>
+        <property name="offsetAsPageNum" value="false"/>
+        <property name="rowBoundsWithCount" value="false"/>
+        <property name="pageSizeZero" value="true"/>
+        <property name="reasonable" value="false"/>
+        <property name="supportMethodsArguments" value="false"/>
+        <property name="returnPageInfo" value="none"/>
+    </plugin>
+</plugins>
 </configuration>
